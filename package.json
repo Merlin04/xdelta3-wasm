@@ -1,0 +1,48 @@
+{
+  "name": "xdelta3",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Merlin04",
+  "main": "dist/index.js",
+  "module": "dist/xdelta3.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "dts build",
+    "lint": "dts lint",
+    "prepare": "dts build",
+    "start": "dts watch",
+    "test": "dts test",
+    "make-native": "cd src/native && make"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "dts lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": false,
+    "tabWidth": 4,
+    "trailingComma": "none"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "peerDependencies": {},
+  "engines": {
+    "node": ">=12"
+  },
+  "devDependencies": {
+    "@rollup/plugin-wasm": "^6.1.3",
+    "@tsconfig/recommended": "^1.0.2",
+    "dts-cli": "^2.0.3",
+    "husky": "^8.0.3",
+    "tslib": "^2.5.2",
+    "typescript": "^5.0.4"
+  }
+}
