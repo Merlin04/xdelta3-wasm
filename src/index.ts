@@ -89,6 +89,21 @@ const makeWrappedXD3Fn = (xd3_fn_name: keyof Exports) => (input: Uint8Array, sou
     return { ret, str: getCodeStr(ret), output };
 }
 
+/**
+ * Create a delta of the `input` relative to the `source`.
+ * @param input Input data to create a delta of
+ * @param source Source/"dictionary" the input is compared to
+ * @param output_size_max Maximum size, in bytes, of the resulting delta. If the delta would be larger than this value, the function will return with the error `ENOSPC` and an empty buffer.
+ * @param smatch_cfg The string matching configuration to use
+ * @returns An object containing the return code, a string representation of the return code, and the resulting bytes of the delta
+ */
 export const xd3_encode_memory = makeWrappedXD3Fn("xd3_encode_memory");
 const _xd3_decode_memory = makeWrappedXD3Fn("xd3_decode_memory");
+/**
+ * Decode a delta created relative to the `source`.
+ * @param input Delta data to decode
+ * @param source Source/"dictionary" the delta is relative to. This is the same `source` as used in encoding
+ * @param output_size_max Maximum size, in bytes, of the resulting decoded data. If the decoded data would be larger than this value, the function will return with the error `ENOSPC` and an empty buffer.
+ * @returns An object containing the return code, a string representation of the return code, and the resulting bytes of the decoded data
+ */
 export const xd3_decode_memory = (input: Uint8Array, source: Uint8Array, output_size_max: number) => _xd3_decode_memory(input, source, output_size_max, 0);

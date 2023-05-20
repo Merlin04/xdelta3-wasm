@@ -1,6 +1,6 @@
 {
-  "name": "xdelta3",
-  "version": "0.1.0",
+  "name": "xdelta3-wasm",
+  "version": "1.0.0",
   "license": "MIT",
   "author": "Merlin04",
   "main": "dist/index.js",
